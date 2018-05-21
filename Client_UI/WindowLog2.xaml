@@ -1,0 +1,258 @@
+﻿<Window x:Class="Client_UI.WindowLog2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client_UI"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="WindowLog2"
+        Height="400" 
+        Width="500" 
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True">
+    <Grid x:Name="GridDesignWindow">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1.3*"/>
+        </Grid.RowDefinitions>
+        <materialDesign:ColorZone Background="#FFE83434">
+            <StackPanel HorizontalAlignment="Right" >
+                <Button materialDesign:ShadowAssist.ShadowDepth="Depth3" 
+                        Background="#FFF32C2C"
+                        BorderThickness="0"
+                        Click="Close_Click">
+                    <materialDesign:PackIcon Kind="WindowClose"/>
+                </Button>
+            </StackPanel>
+        </materialDesign:ColorZone>
+        <Label x:Name="SignUp_Label"
+               Content="SIGN UP"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Bottom"
+               Foreground="#FFF32C2C"
+               FontSize="20"
+               Margin="40,0,40,0"
+               Tag="SignUp"/>
+        <TextBox x:Name="SignUp_FullName"
+                 Grid.Row="1"
+                 materialDesign:HintAssist.Hint="Full Name" 
+                 materialDesign:HintAssist.FloatingScale="0.9"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 Margin="40,0,40,0"
+                 FontSize="15"
+                 MaxLength="70"
+                 Tag="SignUp">
+            <TextBox.ToolTip>
+                <ToolTip Placement="Bottom" Background="#FFFD3737" HasDropShadow="True">
+                    <Label Content="For example : Kuzmich Sergiy"/>
+                </ToolTip>
+            </TextBox.ToolTip>
+        </TextBox>
+        <TextBox x:Name="SignUp_UserName"
+                 Grid.Row="2"
+                 Tag="SignUp"
+                 materialDesign:HintAssist.Hint="User Name"
+                 materialDesign:HintAssist.FloatingScale="0.9"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 Margin="40,0,40,0"
+                 FontSize="15"
+                 MaxLength="40">
+            <TextBox.ToolTip>
+                <ToolTip Placement="Bottom" Background="#FFFD3737" HasDropShadow="True">
+                    <Label Content="For example : Jimbo(all letters) or Jimbo12345(all numbers)"/>
+                </ToolTip>
+            </TextBox.ToolTip>
+        </TextBox>
+        <PasswordBox x:Name="SignUp_Password"
+                     Grid.Row="3"
+                     Tag="SignUp"
+                     materialDesign:HintAssist.Hint="Password"
+                     materialDesign:HintAssist.FloatingScale="0.9"
+                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                     Margin="40,0,40,0"
+                     FontSize="15"
+                     MaxLength="20">
+            <PasswordBox.ToolTip>
+                <ToolTip Placement="Bottom" Background="#FFFD3737" HasDropShadow="True">
+                    <Label Content="For example : Qweasd(all letters) or Qweasd123(all numbers)"/>
+                </ToolTip>
+            </PasswordBox.ToolTip>
+        </PasswordBox>
+        <TextBox x:Name="TextBox_Password_SignUp"
+                 Grid.Row="3"
+                 Visibility="Hidden"
+                 Margin="40,0,40,0"
+                 FontSize="15"/>
+        <Button x:Name="SignUp_Button"
+                Content="SIGN UP"
+                Grid.Row="5"
+                Tag="SignUp"
+                FontSize="18"
+                VerticalAlignment="Top"
+                Margin="280,0,40,0"
+                BorderThickness="0"
+                Foreground="White"
+                Background="#FFF32C2C"
+                Click="SIGNUP_End_Registration_Click"/>
+        <Label x:Name="LogIn_Label"
+               Grid.Row="1"
+               Content="LOG IN"
+               Tag="LogIn"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Foreground="#FFF32C2C"
+               FontSize="20"
+               Margin="40,0,40,0"
+               Visibility="Hidden"/>
+        <TextBox x:Name="Login_UserName"
+                 Grid.Row="2"
+                 Tag="LogIn"
+                 Visibility="Hidden"
+                 materialDesign:HintAssist.Hint="User Name"
+                 materialDesign:HintAssist.FloatingScale="0.9"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 Margin="40,0,40,0"
+                 FontSize="15"/>
+        <PasswordBox x:Name="Login_Password"
+                     Grid.Row="3"
+                     Tag="LogIn"
+                     Visibility="Hidden"
+                     materialDesign:HintAssist.Hint="Password"
+                     materialDesign:HintAssist.FloatingScale="0.9"
+                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                     Margin="40,0,40,0"
+                     FontSize="15"/>
+        <TextBox x:Name="TextBox_Password_Login"
+                 Grid.Row="3"
+                 Visibility="Hidden"
+                 Margin="40,0,40,0"
+                 FontSize="15"/>
+        <Button x:Name="LogIn_Button"
+                Content="LOG IN"
+                Tag="LogIn"
+                Grid.Row="5"
+                FontSize="18"
+                VerticalAlignment="Top"
+                Margin="280,0,40,0"
+                BorderThickness="0"
+                Foreground="White"
+                Background="#FFF32C2C"
+                Visibility="Hidden"
+                Click="LOGIN_Click"/>
+        <Label  x:Name="ForgotPass_Label"
+                Content="Forgot password?" 
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Tag="LogIn"
+                Margin="40,18,300,0"
+                Foreground="#FF424242"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="15"
+                Visibility="Hidden"
+                MouseEnter="ForgotPass_MouseEnter"
+                MouseLeave="ForgotPass_MouseLeave"
+                MouseLeftButtonDown="ForgotPass_MouseLeftButtonDown"/>
+        <materialDesign:DialogHost IsOpen="False" x:Name="InfoWindow" Grid.RowSpan="6">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Margin="30" Orientation="Vertical">
+                    <TextBlock x:Name="InfoTextBlock" 
+                               FontSize="15" 
+                               Margin="5"/>
+                    <Button Content="Accept"
+                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                            Background="#FFF03434"/>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+        <materialDesign:PackIcon x:Name="Icon_SignUp_Account"
+                                 Kind="Account" 
+                                 Grid.Row="1" 
+                                 Tag="SignUp"
+                                 VerticalAlignment="Bottom"
+                                 HorizontalAlignment="Right"
+                                 Margin="0,0,40,10"
+                                 Foreground="{Binding ElementName=SignUp_FullName, Path=BorderBrush}"/>
+        <materialDesign:PackIcon x:Name="Icon_SignUp_AccountKey"
+                                 Kind="AccountKey" 
+                                 Grid.Row="2" 
+                                 Tag="SignUp"
+                                 VerticalAlignment="Bottom"
+                                 HorizontalAlignment="Right"
+                                 Margin="0,0,40,10"
+                                 Foreground="{Binding ElementName=SignUp_UserName, Path=BorderBrush}"/>
+        <Button x:Name="Icon_Button_SignUp_Pass"
+                Grid.Row="3" 
+                VerticalAlignment="Bottom"
+                Tag="SignUp"
+                HorizontalAlignment="Right" 
+                Margin="0,0,20,10"
+                MouseEnter="PackIcon_SignUp_MouseEnter"
+                MouseLeave="PackIcon_SignUp_MouseLeave"
+                Background="Transparent"
+                BorderThickness="0">
+            <materialDesign:PackIcon Kind="Key" 
+                                 Foreground="{Binding ElementName=SignUp_Password, Path=BorderBrush}"/>
+        </Button>
+        <materialDesign:PackIcon x:Name="Icon_Login_AccountKey"
+                                 Kind="AccountKey" 
+                                 Grid.Row="2" 
+                                 Tag="LogIn"
+                                 VerticalAlignment="Bottom"
+                                 HorizontalAlignment="Right"
+                                 Margin="0,0,40,10"
+                                 Foreground="{Binding ElementName=Login_UserName, Path=BorderBrush}"
+                                 Visibility="Hidden"/>
+        <Button x:Name="Icon_Button_Login_Pass"
+                Grid.Row="3" 
+                VerticalAlignment="Bottom"
+                Tag="LogIn"
+                HorizontalAlignment="Right"
+                Margin="0,0,20,10"
+                Visibility="Hidden"
+                MouseEnter="PackIcon_LogIn_MouseEnter"
+                MouseLeave="PackIcon_LogIn_MouseLeave"
+                Background="Transparent"
+                BorderThickness="0">
+            <materialDesign:PackIcon Kind="Key" 
+                                 Foreground="{Binding ElementName=Login_Password, Path=BorderBrush}"/>
+        </Button>
+        <materialDesign:DialogHost IsOpen="False" x:Name="ForgotPassWindow" Grid.RowSpan="6">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Orientation="Vertical">
+                    <Label x:Name="ForgotPass_Info"
+                           FontSize="15"
+                           Foreground="Red"/>
+                    <TextBox x:Name="ForgotPass_UserName"
+                             FontSize="15" 
+                             Margin="0,10,0,10"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             materialDesign:HintAssist.Hint="User Name"
+                             materialDesign:HintAssist.FloatingScale="0.9"
+                             TextChanged="ForgotPass_UserName_TextChanged"/>
+                    <Button Content="Accept"
+                            Background="#FFF03434"
+                           Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"/>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+        <materialDesign:DialogHost IsOpen="False" x:Name="CheckLoginWindow" Grid.RowSpan="6">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Margin="30" Orientation="Vertical">
+                    <TextBlock x:Name="TextBlock_Check_Login"
+                               FontSize="15" 
+                               Margin="5"/>
+                    <Button Content="Accept"
+                            Click="CheckLogin_Click"
+                            Background="#FFF03434"/>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+    </Grid>
+</Window>
