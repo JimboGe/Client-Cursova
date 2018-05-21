@@ -21,7 +21,7 @@ namespace Client_Cursova
         {
             _service.SignUp_NewUser(FullName, NickName, Password);
         }
-        public bool CheckAccount(string NickName, string Password)
+        public User CheckAccount(string NickName, string Password)
         {
             return _service.CheckAccount(NickName, Password);
         }
@@ -32,6 +32,27 @@ namespace Client_Cursova
         public User ForgotPass(string ForgotPass_NickName)
         {
             return _service.ForgotPass(ForgotPass_NickName);
+        }
+        public void SetUserIsOffline(string nickName)
+        {
+             _service.SetUserIsOffline(nickName);
+        }
+        public void SetUserIsOnline(string nickName)
+        {
+            _service.SetUserIsOnline(nickName);
+        }
+
+        public int MyUserId(string myUserName)
+        {
+            return _service.MyUserId(myUserName);
+        }
+        public int ToUserId(string toUserName)
+        {
+            return _service.ToUserId(toUserName);
+        }
+        public void CreateMessage(string Text, int myUserId, int toUserId)
+        {
+            _service.CreateMessage(Text, myUserId, toUserId);
         }
     }
 }

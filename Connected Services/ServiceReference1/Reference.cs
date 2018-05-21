@@ -347,10 +347,10 @@ namespace Client_Cursova.ServiceReference1 {
         System.Threading.Tasks.Task SignUp_NewUserAsync(string FullName, string NickName, string Password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CheckAccount", ReplyAction="http://tempuri.org/IService1/CheckAccountResponse")]
-        bool CheckAccount(string NickName, string Password);
+        Client_Cursova.ServiceReference1.User CheckAccount(string NickName, string Password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CheckAccount", ReplyAction="http://tempuri.org/IService1/CheckAccountResponse")]
-        System.Threading.Tasks.Task<bool> CheckAccountAsync(string NickName, string Password);
+        System.Threading.Tasks.Task<Client_Cursova.ServiceReference1.User> CheckAccountAsync(string NickName, string Password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LogUser", ReplyAction="http://tempuri.org/IService1/LogUserResponse")]
         void LogUser(string NickName);
@@ -363,6 +363,36 @@ namespace Client_Cursova.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ForgotPass", ReplyAction="http://tempuri.org/IService1/ForgotPassResponse")]
         System.Threading.Tasks.Task<Client_Cursova.ServiceReference1.User> ForgotPassAsync(string ForgotPass_NickName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetUserIsOffline", ReplyAction="http://tempuri.org/IService1/SetUserIsOfflineResponse")]
+        void SetUserIsOffline(string nickName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetUserIsOffline", ReplyAction="http://tempuri.org/IService1/SetUserIsOfflineResponse")]
+        System.Threading.Tasks.Task SetUserIsOfflineAsync(string nickName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetUserIsOnline", ReplyAction="http://tempuri.org/IService1/SetUserIsOnlineResponse")]
+        void SetUserIsOnline(string nickName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetUserIsOnline", ReplyAction="http://tempuri.org/IService1/SetUserIsOnlineResponse")]
+        System.Threading.Tasks.Task SetUserIsOnlineAsync(string nickName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/MyUserId", ReplyAction="http://tempuri.org/IService1/MyUserIdResponse")]
+        int MyUserId(string myUserName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/MyUserId", ReplyAction="http://tempuri.org/IService1/MyUserIdResponse")]
+        System.Threading.Tasks.Task<int> MyUserIdAsync(string myUserName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ToUserId", ReplyAction="http://tempuri.org/IService1/ToUserIdResponse")]
+        int ToUserId(string toUserName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ToUserId", ReplyAction="http://tempuri.org/IService1/ToUserIdResponse")]
+        System.Threading.Tasks.Task<int> ToUserIdAsync(string toUserName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateMessage", ReplyAction="http://tempuri.org/IService1/CreateMessageResponse")]
+        void CreateMessage(string Text, int myUserId, int toUserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateMessage", ReplyAction="http://tempuri.org/IService1/CreateMessageResponse")]
+        System.Threading.Tasks.Task CreateMessageAsync(string Text, int myUserId, int toUserId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -416,11 +446,11 @@ namespace Client_Cursova.ServiceReference1 {
             return base.Channel.SignUp_NewUserAsync(FullName, NickName, Password);
         }
         
-        public bool CheckAccount(string NickName, string Password) {
+        public Client_Cursova.ServiceReference1.User CheckAccount(string NickName, string Password) {
             return base.Channel.CheckAccount(NickName, Password);
         }
         
-        public System.Threading.Tasks.Task<bool> CheckAccountAsync(string NickName, string Password) {
+        public System.Threading.Tasks.Task<Client_Cursova.ServiceReference1.User> CheckAccountAsync(string NickName, string Password) {
             return base.Channel.CheckAccountAsync(NickName, Password);
         }
         
@@ -438,6 +468,46 @@ namespace Client_Cursova.ServiceReference1 {
         
         public System.Threading.Tasks.Task<Client_Cursova.ServiceReference1.User> ForgotPassAsync(string ForgotPass_NickName) {
             return base.Channel.ForgotPassAsync(ForgotPass_NickName);
+        }
+        
+        public void SetUserIsOffline(string nickName) {
+            base.Channel.SetUserIsOffline(nickName);
+        }
+        
+        public System.Threading.Tasks.Task SetUserIsOfflineAsync(string nickName) {
+            return base.Channel.SetUserIsOfflineAsync(nickName);
+        }
+        
+        public void SetUserIsOnline(string nickName) {
+            base.Channel.SetUserIsOnline(nickName);
+        }
+        
+        public System.Threading.Tasks.Task SetUserIsOnlineAsync(string nickName) {
+            return base.Channel.SetUserIsOnlineAsync(nickName);
+        }
+        
+        public int MyUserId(string myUserName) {
+            return base.Channel.MyUserId(myUserName);
+        }
+        
+        public System.Threading.Tasks.Task<int> MyUserIdAsync(string myUserName) {
+            return base.Channel.MyUserIdAsync(myUserName);
+        }
+        
+        public int ToUserId(string toUserName) {
+            return base.Channel.ToUserId(toUserName);
+        }
+        
+        public System.Threading.Tasks.Task<int> ToUserIdAsync(string toUserName) {
+            return base.Channel.ToUserIdAsync(toUserName);
+        }
+        
+        public void CreateMessage(string Text, int myUserId, int toUserId) {
+            base.Channel.CreateMessage(Text, myUserId, toUserId);
+        }
+        
+        public System.Threading.Tasks.Task CreateMessageAsync(string Text, int myUserId, int toUserId) {
+            return base.Channel.CreateMessageAsync(Text, myUserId, toUserId);
         }
     }
 }

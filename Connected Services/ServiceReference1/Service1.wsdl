@@ -43,6 +43,36 @@
   <wsdl:message name="IService1_ForgotPass_OutputMessage">
     <wsdl:part name="parameters" element="tns:ForgotPassResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_SetUserIsOffline_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetUserIsOffline" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetUserIsOffline_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetUserIsOfflineResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetUserIsOnline_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetUserIsOnline" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetUserIsOnline_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetUserIsOnlineResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_MyUserId_InputMessage">
+    <wsdl:part name="parameters" element="tns:MyUserId" />
+  </wsdl:message>
+  <wsdl:message name="IService1_MyUserId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MyUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ToUserId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ToUserId" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ToUserId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ToUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateMessage" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateMessageResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetAllUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllUsers" message="tns:IService1_GetAllUsers_InputMessage" />
@@ -67,6 +97,26 @@
     <wsdl:operation name="ForgotPass">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ForgotPass" message="tns:IService1_ForgotPass_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ForgotPassResponse" message="tns:IService1_ForgotPass_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUserIsOffline">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetUserIsOffline" message="tns:IService1_SetUserIsOffline_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetUserIsOfflineResponse" message="tns:IService1_SetUserIsOffline_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUserIsOnline">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetUserIsOnline" message="tns:IService1_SetUserIsOnline_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetUserIsOnlineResponse" message="tns:IService1_SetUserIsOnline_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MyUserId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/MyUserId" message="tns:IService1_MyUserId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/MyUserIdResponse" message="tns:IService1_MyUserId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ToUserId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ToUserId" message="tns:IService1_ToUserId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ToUserIdResponse" message="tns:IService1_ToUserId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateMessage" message="tns:IService1_CreateMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateMessageResponse" message="tns:IService1_CreateMessage_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -118,6 +168,51 @@
     </wsdl:operation>
     <wsdl:operation name="ForgotPass">
       <soap:operation soapAction="http://tempuri.org/IService1/ForgotPass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUserIsOffline">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetUserIsOffline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUserIsOnline">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetUserIsOnline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MyUserId">
+      <soap:operation soapAction="http://tempuri.org/IService1/MyUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ToUserId">
+      <soap:operation soapAction="http://tempuri.org/IService1/ToUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateMessage">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateMessage" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

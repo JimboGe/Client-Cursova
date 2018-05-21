@@ -52,7 +52,7 @@
   <xs:element name="CheckAccountResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="CheckAccountResult" type="xs:boolean" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfService" minOccurs="0" name="CheckAccountResult" nillable="true" type="q3:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -78,8 +78,74 @@
   <xs:element name="ForgotPassResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfService" minOccurs="0" name="ForgotPassResult" nillable="true" type="q3:User" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfService" minOccurs="0" name="ForgotPassResult" nillable="true" type="q4:User" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetUserIsOffline">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nickName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetUserIsOfflineResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetUserIsOnline">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nickName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetUserIsOnlineResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MyUserId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="myUserName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MyUserIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MyUserIdResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ToUserId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="toUserName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ToUserIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ToUserIdResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="myUserId" type="xs:int" />
+        <xs:element minOccurs="0" name="toUserId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateMessageResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

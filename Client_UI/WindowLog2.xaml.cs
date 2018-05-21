@@ -62,7 +62,6 @@ namespace Client_UI
             SignUp_Password.Visibility = Visibility.Visible;
             SignUp_Password.Focus();
         }
-
         private void SIGNUP_End_Registration_Click(object sender, RoutedEventArgs e)
         {
             InfoWindow.IsOpen = true;
@@ -92,15 +91,14 @@ namespace Client_UI
                 }
             }
         }
-        ////////////
         private void LOGIN_Click(object sender, RoutedEventArgs e)
         {
             CheckLoginWindow.IsOpen = true;
-            if (_dal.CheckAccount(Login_UserName.Text, Login_Password.Password) == true)
+            if (_dal.CheckAccount(Login_UserName.Text, Login_Password.Password) != null)
             {
                 TextBlock_Check_Login.Text = "Hello " + Login_UserName.Text;
                 _dal.LogUser(Login_UserName.Text);
-
+                _dal.SetUserIsOnline(Login_UserName.Text);
             }
             else
             {
@@ -109,7 +107,7 @@ namespace Client_UI
         }
         private void CheckLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (_dal.CheckAccount(Login_UserName.Text, Login_Password.Password) == true)
+            if (_dal.CheckAccount(Login_UserName.Text, Login_Password.Password) != null)
             {
                 WindowChat windowChat = new WindowChat();
                 windowChat.MyUserName.Content = Login_UserName.Text;
