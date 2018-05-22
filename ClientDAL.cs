@@ -13,6 +13,14 @@ namespace Client_Cursova
         {
             return _service.GetAllUsers();
         }
+        public Message[]GetAllMessages()
+        {
+            return _service.GetAllMessages();
+        }
+        public LogUser[] GetAllLogs()
+        {
+            return _service.GetAllLogs();
+        }
         public User CheckNickName(string SignUp_UserName)
         {
             return _service.CheckNickName(SignUp_UserName);
@@ -41,7 +49,6 @@ namespace Client_Cursova
         {
             _service.SetUserIsOnline(nickName);
         }
-
         public int MyUserId(string myUserName)
         {
             return _service.MyUserId(myUserName);
@@ -53,6 +60,10 @@ namespace Client_Cursova
         public void CreateMessage(string Text, int myUserId, int toUserId)
         {
             _service.CreateMessage(Text, myUserId, toUserId);
+        }
+        public void CreateAdmin()
+        {
+            _service.CreateAdmin();
         }
     }
 }

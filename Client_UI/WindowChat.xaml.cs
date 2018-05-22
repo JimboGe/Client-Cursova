@@ -5,6 +5,9 @@ using Client_Cursova;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Documents;
+using System.Data;
+using System.Linq;
+using System.Windows.Data;
 
 namespace Client_UI
 {
@@ -12,7 +15,11 @@ namespace Client_UI
     {
         private readonly ClientDAL _dal = new ClientDAL();
         string toUserName = string.Empty;
+        bool admin_AllUsers_Click = false;
+        bool admin_HistoryMessages_Click = false;
+        bool admin_ConnectionHistory_Click = false;
         bool focus_Message_Text = false;
+        bool user_Click = false;
         int myUserId;
         int toUserId;
 
@@ -68,6 +75,7 @@ namespace Client_UI
         }
         private void UserClick(object sender, RoutedEventArgs e)
         {
+            user_Click = true;
             toUserName = (sender as Button).Content.ToString();
             ChangeBackgroundUserClick(sender);
             SendMessage_Button.Visibility = Visibility.Visible;
@@ -95,6 +103,10 @@ namespace Client_UI
         ///
         private void SendMessage_Click(object sender, RoutedEventArgs e)
         {
+            SendMessage();
+        }
+        private void SendMessage()
+        {
             if (Text_Message.Text != string.Empty)
             {
                 FillMessage();
@@ -102,7 +114,6 @@ namespace Client_UI
                 Text_Message.Text = string.Empty;
             }
         }
-       
 
         private void FillMessage()
         {
@@ -133,7 +144,9 @@ namespace Client_UI
         private void ShowAllMessages()
         { }
         private void FillAllMessages()
-        { }
+        {
+
+        }
         private void UserIsOffline()
         {
             _dal.SetUserIsOffline(MyUserName.Content.ToString());
@@ -150,29 +163,109 @@ namespace Client_UI
             StackPanel_Settings.Visibility = Visibility.Visible;
         }
         private void Admin_ShowAllUsers_Click(object sender, RoutedEventArgs e)
-        { }
+        {
+            admin_AllUsers_Click = true;
+            admin_HistoryMessages_Click = false;
+            admin_ConnectionHistory_Click = false;
+            Admin_ShowAllUsers();
+        }
         private void Admin_ShowHistoryMessages_Click(object sender, RoutedEventArgs e)
-        { }
+        {
+            admin_AllUsers_Click = false;
+            admin_HistoryMessages_Click = true;
+            admin_ConnectionHistory_Click = false;
+            Admin_HistoryMessages();
+        }
         private void Admin_ShowConnectionHistory_Click(object sender, RoutedEventArgs e)
-        { }
+        {
+            admin_AllUsers_Click = false;
+            admin_HistoryMessages_Click = false;
+            admin_ConnectionHistory_Click = true;
+            Admin_ConnectionHistory();
+        }
         private void Admin_CreateNewDataGridTextColumn(string Header, string Binding)
-        { }
+        {
+            DataGridTextColumn textColumn = new DataGridTextColumn();
+            textColumn.Header = Header;
+            textColumn.Binding = new Binding(Binding);
+            var result = DataGrid_Admin.Columns.Where(x => x.Header.ToString() == Header).FirstOrDefault();
+            if (result == null)
+            {
+                DataGrid_Admin.Columns.Add(textColumn);
+            }
+        }
         private void Admin_ShowAllUsers()
-        { }
+        {
+            DataGrid_Admin.Columns.Clear();
+            DataGrid_Admin.Items.Clear();
+            Admin_CreateNewDataGridTextColumn("Id", "Id");
+            Admin_CreateNewDataGridTextColumn("Nick Name", "NickName");
+            Admin_CreateNewDataGridTextColumn("Is Online", "IsOnline");
+            foreach (var item in _dal.GetAllUsers())
+            {
+                DataGrid_Admin.Items.Add(item);
+            }
+        }
         private void Admin_HistoryMessages()
-        { }
+        {
+            DataGrid_Admin.Columns.Clear();
+            DataGrid_Admin.Items.Clear();
+            Admin_CreateNewDataGridTextColumn("Id", "Id");
+            Admin_CreateNewDataGridTextColumn("User Id", "UserId");
+            Admin_CreateNewDataGridTextColumn("To User Id", "ToUserId");
+            Admin_CreateNewDataGridTextColumn("Text", "Text");
+            Admin_CreateNewDataGridTextColumn("Date", "Date");
+            foreach (var item in _dal.GetAllMessages())
+            {
+                DataGrid_Admin.Items.Add(item);
+            }
+        }
         private void Admin_ConnectionHistory()
-        { }
-        private void Window_MouseEnter(object sender, MouseEventArgs e)
-        { }
-        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-
+            DataGrid_Admin.Columns.Clear();
+            DataGrid_Admin.Items.Clear();
+            Admin_CreateNewDataGridTextColumn("Id", "Id");
+            Admin_CreateNewDataGridTextColumn("User", "UserName");
+            Admin_CreateNewDataGridTextColumn("Connection Time", "ConnectionTime");
+            foreach (var item in _dal.GetAllLogs())
+            {
+                DataGrid_Admin.Items.Add(item);
+            }
         }
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            _dal.SetUserIsOffline(MyUserName.Content.ToString());
+    
+    private void Window_MouseEnter(object sender, MouseEventArgs e)
+    {
+            if (admin_AllUsers_Click == true)
+            {
+                Admin_ShowAllUsers();
+            }
+            if (admin_ConnectionHistory_Click == true)
+            {
+                Admin_ConnectionHistory();
+            }
+            if (admin_HistoryMessages_Click == true)
+            {
+                Admin_HistoryMessages();
+            }
+            if (user_Click == true)
+            {
+                ShowAllMessages();
+            }
         }
-
+    private void Window_KeyDown(object sender, KeyEventArgs e)
+    {
+            if (focus_Message_Text == true)
+            {
+                if (e.Key == Key.Enter)
+                {
+                    SendMessage();
+                }
+            }
+        }
+    private void Window_Closed(object sender, EventArgs e)
+    {
+        _dal.SetUserIsOffline(MyUserName.Content.ToString());
     }
+
+}
 }
