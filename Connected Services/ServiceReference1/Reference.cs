@@ -334,6 +334,18 @@ namespace Client_Cursova.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllUsers", ReplyAction="http://tempuri.org/IService1/GetAllUsersResponse")]
         System.Threading.Tasks.Task<Client_Cursova.ServiceReference1.User[]> GetAllUsersAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllMessages", ReplyAction="http://tempuri.org/IService1/GetAllMessagesResponse")]
+        Client_Cursova.ServiceReference1.Message[] GetAllMessages();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllMessages", ReplyAction="http://tempuri.org/IService1/GetAllMessagesResponse")]
+        System.Threading.Tasks.Task<Client_Cursova.ServiceReference1.Message[]> GetAllMessagesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllLogs", ReplyAction="http://tempuri.org/IService1/GetAllLogsResponse")]
+        Client_Cursova.ServiceReference1.LogUser[] GetAllLogs();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllLogs", ReplyAction="http://tempuri.org/IService1/GetAllLogsResponse")]
+        System.Threading.Tasks.Task<Client_Cursova.ServiceReference1.LogUser[]> GetAllLogsAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CheckNickName", ReplyAction="http://tempuri.org/IService1/CheckNickNameResponse")]
         Client_Cursova.ServiceReference1.User CheckNickName(string SignUp_UserName);
         
@@ -393,6 +405,42 @@ namespace Client_Cursova.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateMessage", ReplyAction="http://tempuri.org/IService1/CreateMessageResponse")]
         System.Threading.Tasks.Task CreateMessageAsync(string Text, int myUserId, int toUserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CanCreateAdmin", ReplyAction="http://tempuri.org/IService1/CanCreateAdminResponse")]
+        Client_Cursova.ServiceReference1.User CanCreateAdmin();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CanCreateAdmin", ReplyAction="http://tempuri.org/IService1/CanCreateAdminResponse")]
+        System.Threading.Tasks.Task<Client_Cursova.ServiceReference1.User> CanCreateAdminAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateAdmin", ReplyAction="http://tempuri.org/IService1/CreateAdminResponse")]
+        void CreateAdmin();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateAdmin", ReplyAction="http://tempuri.org/IService1/CreateAdminResponse")]
+        System.Threading.Tasks.Task CreateAdminAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetToUsersId", ReplyAction="http://tempuri.org/IService1/GetToUsersIdResponse")]
+        int[] GetToUsersId(int toUserId, int myUserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetToUsersId", ReplyAction="http://tempuri.org/IService1/GetToUsersIdResponse")]
+        System.Threading.Tasks.Task<int[]> GetToUsersIdAsync(int toUserId, int myUserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMyUsersId", ReplyAction="http://tempuri.org/IService1/GetMyUsersIdResponse")]
+        int[] GetMyUsersId(int toUserId, int myUserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMyUsersId", ReplyAction="http://tempuri.org/IService1/GetMyUsersIdResponse")]
+        System.Threading.Tasks.Task<int[]> GetMyUsersIdAsync(int toUserId, int myUserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMessages", ReplyAction="http://tempuri.org/IService1/GetMessagesResponse")]
+        string[] GetMessages(int toUserId, int myUserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMessages", ReplyAction="http://tempuri.org/IService1/GetMessagesResponse")]
+        System.Threading.Tasks.Task<string[]> GetMessagesAsync(int toUserId, int myUserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetTimeMessages", ReplyAction="http://tempuri.org/IService1/GetTimeMessagesResponse")]
+        System.DateTime[] GetTimeMessages(int toUserId, int myUserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetTimeMessages", ReplyAction="http://tempuri.org/IService1/GetTimeMessagesResponse")]
+        System.Threading.Tasks.Task<System.DateTime[]> GetTimeMessagesAsync(int toUserId, int myUserId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -428,6 +476,22 @@ namespace Client_Cursova.ServiceReference1 {
         
         public System.Threading.Tasks.Task<Client_Cursova.ServiceReference1.User[]> GetAllUsersAsync() {
             return base.Channel.GetAllUsersAsync();
+        }
+        
+        public Client_Cursova.ServiceReference1.Message[] GetAllMessages() {
+            return base.Channel.GetAllMessages();
+        }
+        
+        public System.Threading.Tasks.Task<Client_Cursova.ServiceReference1.Message[]> GetAllMessagesAsync() {
+            return base.Channel.GetAllMessagesAsync();
+        }
+        
+        public Client_Cursova.ServiceReference1.LogUser[] GetAllLogs() {
+            return base.Channel.GetAllLogs();
+        }
+        
+        public System.Threading.Tasks.Task<Client_Cursova.ServiceReference1.LogUser[]> GetAllLogsAsync() {
+            return base.Channel.GetAllLogsAsync();
         }
         
         public Client_Cursova.ServiceReference1.User CheckNickName(string SignUp_UserName) {
@@ -508,6 +572,54 @@ namespace Client_Cursova.ServiceReference1 {
         
         public System.Threading.Tasks.Task CreateMessageAsync(string Text, int myUserId, int toUserId) {
             return base.Channel.CreateMessageAsync(Text, myUserId, toUserId);
+        }
+        
+        public Client_Cursova.ServiceReference1.User CanCreateAdmin() {
+            return base.Channel.CanCreateAdmin();
+        }
+        
+        public System.Threading.Tasks.Task<Client_Cursova.ServiceReference1.User> CanCreateAdminAsync() {
+            return base.Channel.CanCreateAdminAsync();
+        }
+        
+        public void CreateAdmin() {
+            base.Channel.CreateAdmin();
+        }
+        
+        public System.Threading.Tasks.Task CreateAdminAsync() {
+            return base.Channel.CreateAdminAsync();
+        }
+        
+        public int[] GetToUsersId(int toUserId, int myUserId) {
+            return base.Channel.GetToUsersId(toUserId, myUserId);
+        }
+        
+        public System.Threading.Tasks.Task<int[]> GetToUsersIdAsync(int toUserId, int myUserId) {
+            return base.Channel.GetToUsersIdAsync(toUserId, myUserId);
+        }
+        
+        public int[] GetMyUsersId(int toUserId, int myUserId) {
+            return base.Channel.GetMyUsersId(toUserId, myUserId);
+        }
+        
+        public System.Threading.Tasks.Task<int[]> GetMyUsersIdAsync(int toUserId, int myUserId) {
+            return base.Channel.GetMyUsersIdAsync(toUserId, myUserId);
+        }
+        
+        public string[] GetMessages(int toUserId, int myUserId) {
+            return base.Channel.GetMessages(toUserId, myUserId);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetMessagesAsync(int toUserId, int myUserId) {
+            return base.Channel.GetMessagesAsync(toUserId, myUserId);
+        }
+        
+        public System.DateTime[] GetTimeMessages(int toUserId, int myUserId) {
+            return base.Channel.GetTimeMessages(toUserId, myUserId);
+        }
+        
+        public System.Threading.Tasks.Task<System.DateTime[]> GetTimeMessagesAsync(int toUserId, int myUserId) {
+            return base.Channel.GetTimeMessagesAsync(toUserId, myUserId);
         }
     }
 }

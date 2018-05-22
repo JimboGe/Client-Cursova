@@ -73,6 +73,10 @@ namespace Client_UI
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if(_dal.CanCreateAdmin() == null)
+            {
+                _dal.CreateAdmin();
+            }
             w2.Show();
             w2.Focus();
             w2.Owner = this;

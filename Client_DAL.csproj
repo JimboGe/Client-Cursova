@@ -62,6 +62,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Connected Services\ServiceReference1\Client_Cursova.ServiceReference1.LogUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\Client_Cursova.ServiceReference1.Message.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference1\Client_Cursova.ServiceReference1.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -73,6 +79,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference1\Service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference1\Service13.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
