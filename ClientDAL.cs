@@ -21,25 +21,25 @@ namespace Client_Cursova
         {
             return _service.GetAllLogs();
         }
-        public User CheckNickName(string SignUp_UserName)
+        public User CheckNickName(string signUp_UserName)
         {
-            return _service.CheckNickName(SignUp_UserName);
+            return _service.CheckNickName(signUp_UserName);
         }
-        public void SignUp_NewUser(string FullName, string NickName, string Password)
+        public void SignUp_NewUser(string fullName, string nickName, string password)
         {
-            _service.SignUp_NewUser(FullName, NickName, Password);
+            _service.SignUp_NewUser(fullName, nickName, password);
         }
-        public User CheckAccount(string NickName, string Password)
+        public User CheckAccount(string nickName, string password)
         {
-            return _service.CheckAccount(NickName, Password);
+            return _service.CheckAccount(nickName, password);
         }
-        public void LogUser(string NickName)
+        public void LogUser(string nickName)
         {
-            _service.LogUser(NickName);
+            _service.LogUser(nickName);
         }
-        public User ForgotPass(string ForgotPass_NickName)
+        public User ForgotPass(string forgotPass_NickName)
         {
-            return _service.ForgotPass(ForgotPass_NickName);
+            return _service.ForgotPass(forgotPass_NickName);
         }
         public User CanCreateAdmin()
         {
@@ -62,9 +62,9 @@ namespace Client_Cursova
         {
             return _service.ToUserId(toUserName);
         }
-        public void CreateMessage(string Text, int myUserId, int toUserId)
+        public void CreateMessage(string text, int myUserId, int toUserId)
         {
-            _service.CreateMessage(Text, myUserId, toUserId);
+            _service.CreateMessage(text, myUserId, toUserId);
         }
         public void CreateAdmin()
         {
