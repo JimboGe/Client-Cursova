@@ -53,7 +53,6 @@ namespace Client_Cursova
         {
             _service.SetUserIsOnline(nickName);
         }
-
         public int MyUserId(string myUserName)
         {
             return _service.MyUserId(myUserName);
@@ -85,6 +84,10 @@ namespace Client_Cursova
         public DateTime[] GetTimeMessages(int toUserId, int myUserId)
         {
             return _service.GetTimeMessages(toUserId, myUserId);
+        }
+        public void CreateAdmin()
+        {
+            _service.CreateAdmin();
         }
     }
 }

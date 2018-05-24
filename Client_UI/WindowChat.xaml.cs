@@ -332,12 +332,28 @@ namespace Client_UI
                 DataGrid_Admin.Items.Add(item);
             }
         }
-        private void Window_MouseEnter(object sender, MouseEventArgs e)
-        {
-            
+    
+    private void Window_MouseEnter(object sender, MouseEventArgs e)
+    {
+            if (admin_AllUsers_Click == true)
+            {
+                Admin_ShowAllUsers();
+            }
+            if (admin_ConnectionHistory_Click == true)
+            {
+                Admin_ConnectionHistory();
+            }
+            if (admin_HistoryMessages_Click == true)
+            {
+                Admin_HistoryMessages();
+            }
+            if (user_Click == true)
+            {
+                ShowAllMessages();
+            }
         }
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
+    private void Window_KeyDown(object sender, KeyEventArgs e)
+    {
             if (focus_Message_Text == true)
             {
                 if (e.Key == Key.Enter)
@@ -372,5 +388,5 @@ namespace Client_UI
             ShowUsers();
         }
 
-    }
+}
 }
