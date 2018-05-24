@@ -80,16 +80,40 @@ namespace Client_UI
                  && item.NickName != _dal.CanCreateAdmin().NickName)
                 {
                     StackPanel st = new StackPanel();
+                    
                     st.Orientation = Orientation.Horizontal;
+                    Grid grid = new Grid();
+                    ColumnDefinition column = new ColumnDefinition();
+                    ColumnDefinition column2 = new ColumnDefinition();
+
+                    grid.ColumnDefinitions.Add(column);
+                    grid.ColumnDefinitions.Add(column2);
+
+                    Label label = new Label();
+                    label.Content = item.NickName;
+                    MaterialDesignThemes.Wpf.PackIcon icon = new MaterialDesignThemes.Wpf.PackIcon();
+                    column2.Width = new GridLength(20);
+
+
+
+                    Grid.SetColumn(icon, 2);
+                    Grid.SetColumn(label, 0);
+
+                    grid.Children.Add(icon);
+                    grid.Children.Add(label);
+
+
+
                     Button newUser = new Button()
                     {
-                        Content = item.NickName,
+                        Content = grid,
+                        Tag = item.NickName,
                         Foreground = Brushes.Black,
                         Background = Brushes.Transparent,
                         BorderBrush = Brushes.Transparent,
                         Width = 187
                     };
-                    MaterialDesignThemes.Wpf.PackIcon icon = new MaterialDesignThemes.Wpf.PackIcon();
+                    
                     icon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Circle;
                     icon.Foreground = ChangeUserStatusColor(item);
                     icon.VerticalAlignment = VerticalAlignment.Center;
