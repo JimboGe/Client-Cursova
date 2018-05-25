@@ -67,6 +67,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserControl_ShowUser.xaml.cs">
+      <DependentUpon>UserControl_ShowUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowChat.xaml.cs">
       <DependentUpon>WindowChat.xaml</DependentUpon>
     </Compile>
@@ -85,6 +88,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControl_ShowUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowChat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

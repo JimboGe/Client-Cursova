@@ -85,9 +85,9 @@ namespace Client_Cursova
         {
             return _service.GetTimeMessages(toUserId, myUserId);
         }
-        public void CreateAdmin()
+        public DateTime GetTimeFromOfflineUser(string nickName)
         {
-            _service.CreateAdmin();
+            return _service.GetTimeFromOfflineUser(nickName);
         }
     }
 }

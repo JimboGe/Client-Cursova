@@ -79,48 +79,29 @@ namespace Client_UI
                 if (item.NickName != MyUserName.Content.ToString()
                  && item.NickName != _dal.CanCreateAdmin().NickName)
                 {
-                    StackPanel st = new StackPanel();
-                    
-                    st.Orientation = Orientation.Horizontal;
-                    Grid grid = new Grid();
-                    ColumnDefinition column = new ColumnDefinition();
-                    ColumnDefinition column2 = new ColumnDefinition();
-
-                    grid.ColumnDefinitions.Add(column);
-                    grid.ColumnDefinitions.Add(column2);
-
-                    Label label = new Label();
-                    label.Content = item.NickName;
-                    MaterialDesignThemes.Wpf.PackIcon icon = new MaterialDesignThemes.Wpf.PackIcon();
-                    column2.Width = new GridLength(20);
-
-
-
-                    Grid.SetColumn(icon, 2);
-                    Grid.SetColumn(label, 0);
-
-                    grid.Children.Add(icon);
-                    grid.Children.Add(label);
-
-
-
+                    UserControl_ShowUser control = new UserControl_ShowUser();
+                    control.UserControl_Circle_Online.Foreground = ChangeUserStatusColor(item);
+                    control.UserControl_Name.Text = item.NickName;
+                    if (item.IsOnline == false)
+                    {
+                        control.UserControl_Text_Online.Text = $"left {_dal.GetTimeFromOfflineUser(item.NickName).ToString()} min ago";
+                    }
+                    else
+                    {
+                        control.UserControl_Text_Online.Text = "online";
+                    }
                     Button newUser = new Button()
                     {
-                        Content = grid,
+                        Content = control,
                         Tag = item.NickName,
                         Foreground = Brushes.Black,
                         Background = Brushes.Transparent,
                         BorderBrush = Brushes.Transparent,
-                        Width = 187
+                        Height = 60,
+                        Margin = new Thickness(0,0,38,0)
                     };
-                    
-                    icon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Circle;
-                    icon.Foreground = ChangeUserStatusColor(item);
-                    icon.VerticalAlignment = VerticalAlignment.Center;
-                    st.Children.Add(newUser);
-                    st.Children.Add(icon);
                     newUser.Click += new RoutedEventHandler(UserClick);
-                    MyStack.Children.Add(st);
+                    MyStack.Children.Add(newUser);
                 }
             }
         }
@@ -128,17 +109,17 @@ namespace Client_UI
         {
             if(user.IsOnline == true)
             {
-                return new SolidColorBrush(Color.FromRgb(232, 52, 52));
+                return new SolidColorBrush(Color.FromRgb(255, 210, 0));
             }
             else
             {
-                return new SolidColorBrush(Color.FromRgb(255, 210, 0));
+                return new SolidColorBrush(Color.FromRgb(232, 52, 52));
             }
         }
         private void UserClick(object sender, RoutedEventArgs e)
         {
             user_Click = true;
-            toUserName = (sender as Button).Content.ToString();
+            toUserName = (sender as Button).Tag.ToString();
             ShowAllMessages();
             ChangeBackgroundUserClick(sender);
             SendMessage_Button.Visibility = Visibility.Visible;
@@ -333,7 +314,7 @@ namespace Client_UI
             }
         }
     
-    private void Window_KeyDown(object sender, KeyEventArgs e)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
     {
             if (focus_Message_Text == true)
             {
