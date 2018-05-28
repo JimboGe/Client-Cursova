@@ -10,17 +10,24 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsOnline" type="xs:boolean" />
-      <xs:element minOccurs="0" name="LogUser" nillable="true" type="tns:LogUser" />
+      <xs:element minOccurs="0" name="LogUser" nillable="true" type="tns:ArrayOfLogUser" />
       <xs:element minOccurs="0" name="Messages" nillable="true" type="tns:ArrayOfMessage" />
       <xs:element minOccurs="0" name="NickName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfLogUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LogUser" nillable="true" type="tns:LogUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLogUser" nillable="true" type="tns:ArrayOfLogUser" />
   <xs:complexType name="LogUser">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ConnectionTime" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="User" nillable="true" type="tns:ArrayOfUser" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
       <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -41,10 +48,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Message" nillable="true" type="tns:Message" />
-  <xs:complexType name="ArrayOfLogUser">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="LogUser" nillable="true" type="tns:LogUser" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfLogUser" nillable="true" type="tns:ArrayOfLogUser" />
 </xs:schema>

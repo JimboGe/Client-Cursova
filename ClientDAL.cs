@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Client_Cursova.ServiceReference1;
 namespace Client_Cursova
 {
@@ -17,41 +13,41 @@ namespace Client_Cursova
         {
             return _service.GetAllMessages();
         }
-        public LogUser[] GetAllLogs()
+        public LogUser[] GetUserLog(string userName)
         {
-            return _service.GetAllLogs();
+            return _service.GetUserLog(userName);
         }
-        public User CheckNickName(string signUp_UserName)
+        public User CheckNickName(string userName)
         {
-            return _service.CheckNickName(signUp_UserName);
+            return _service.CheckNickName(userName);
         }
-        public void SignUp_NewUser(string fullName, string nickName, string password)
+        public void LogUser(string userName)
         {
-            _service.SignUp_NewUser(fullName, nickName, password);
+            _service.LogUser(userName);
         }
-        public User CheckAccount(string nickName, string password)
+        public void SignUp_NewUser(string fullName, string userName, string password)
         {
-            return _service.CheckAccount(nickName, password);
+            _service.SignUp_NewUser(fullName, userName, password);
         }
-        public void LogUser(string nickName)
+        public User CheckAccount(string userName, string password)
         {
-            _service.LogUser(nickName);
+            return _service.CheckAccount(userName, password);
         }
-        public User ForgotPass(string forgotPass_NickName)
+        public User ForgotPass(string userName)
         {
-            return _service.ForgotPass(forgotPass_NickName);
+            return _service.ForgotPass(userName);
         }
         public User CanCreateAdmin()
         {
             return _service.CanCreateAdmin();
         }
-        public void SetUserIsOffline(string nickName)
+        public void SetUserIsOffline(string userName)
         {
-             _service.SetUserIsOffline(nickName);
+             _service.SetUserIsOffline(userName);
         }
-        public void SetUserIsOnline(string nickName)
+        public void SetUserIsOnline(string userName)
         {
-            _service.SetUserIsOnline(nickName);
+            _service.SetUserIsOnline(userName);
         }
         public int MyUserId(string myUserName)
         {
@@ -61,9 +57,9 @@ namespace Client_Cursova
         {
             return _service.ToUserId(toUserName);
         }
-        public void CreateMessage(string text, int myUserId, int toUserId)
+        public void CreateMessage(string text, int myUserId, int toUserId, string toUserName, string myUserName)
         {
-            _service.CreateMessage(text, myUserId, toUserId);
+            _service.CreateMessage(text, myUserId, toUserId, toUserName, myUserName);
         }
         public void CreateAdmin()
         {
@@ -84,10 +80,6 @@ namespace Client_Cursova
         public DateTime[] GetTimeMessages(int toUserId, int myUserId)
         {
             return _service.GetTimeMessages(toUserId, myUserId);
-        }
-        public DateTime GetTimeFromOfflineUser(string nickName)
-        {
-            return _service.GetTimeFromOfflineUser(nickName);
         }
     }
 }

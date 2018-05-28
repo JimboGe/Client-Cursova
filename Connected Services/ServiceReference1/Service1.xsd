@@ -26,22 +26,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllLogs">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllLogsResponse">
+  <xs:element name="GetUserLog">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfService" minOccurs="0" name="GetAllLogsResult" nillable="true" type="q3:ArrayOfLogUser" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserLogResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfService" minOccurs="0" name="GetUserLogResult" nillable="true" type="q3:ArrayOfLogUser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CheckNickName">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="SignUp_UserName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -55,9 +57,9 @@
   <xs:element name="SignUp_NewUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="NickName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fullName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -69,8 +71,8 @@
   <xs:element name="CheckAccount">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="NickName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -81,22 +83,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="LogUser">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="NickName" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="LogUserResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="ForgotPass">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ForgotPass_NickName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -110,7 +100,7 @@
   <xs:element name="SetUserIsOffline">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="nickName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -122,7 +112,7 @@
   <xs:element name="SetUserIsOnline">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="nickName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -162,9 +152,11 @@
   <xs:element name="CreateMessage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="text" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="myUserId" type="xs:int" />
         <xs:element minOccurs="0" name="toUserId" type="xs:int" />
+        <xs:element minOccurs="0" name="toUserName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="myUserName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -255,18 +247,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetTimeFromOfflineUser">
+  <xs:element name="LogUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="nickName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetTimeFromOfflineUserResponse">
+  <xs:element name="LogUserResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetTimeFromOfflineUserResult" type="xs:dateTime" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

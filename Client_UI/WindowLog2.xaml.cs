@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Client_Cursova;
+
 namespace Client_UI
 {
     public partial class WindowLog2 : Window
@@ -70,8 +63,10 @@ namespace Client_UI
                 SignUp_FullName.Text != string.Empty &&
                 SignUp_Password.Password != string.Empty)
             {
+
                 _dal.SignUp_NewUser(SignUp_FullName.Text, SignUp_UserName.Text,
-                                    SignUp_Password.Password);
+                                       SignUp_Password.Password);
+                _dal.LogUser(SignUp_UserName.Text);
                 InfoTextBlock.Text = "Registration was successful!!";
                 SignUp_FullName.Text = string.Empty;
                 SignUp_Password.Password = string.Empty;
@@ -97,7 +92,6 @@ namespace Client_UI
             if (_dal.CheckAccount(Login_UserName.Text, Login_Password.Password) != null)
             {
                 TextBlock_Check_Login.Text = "Hello " + Login_UserName.Text;
-                _dal.LogUser(Login_UserName.Text);
                 _dal.SetUserIsOnline(Login_UserName.Text);
             }
             else
@@ -113,6 +107,7 @@ namespace Client_UI
                 windowChat.MyUserName.Content = Login_UserName.Text;
                 this.Owner.Close();
                 windowChat.Show();
+
             }
             CheckLoginWindow.IsOpen = false;
         }

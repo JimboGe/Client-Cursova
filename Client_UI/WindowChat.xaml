@@ -6,28 +6,48 @@
         xmlns:local="clr-namespace:Client_UI"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="WindowChat" 
-        MinHeight="600"
-        MinWidth="700" 
+        Title="Chat" 
+        MinHeight="750"
+        MinWidth="900" 
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None"
-        MaxHeight="800"
-        MaxWidth="900"
         Loaded="Window_Loaded"
         KeyDown="Window_KeyDown"
-        Closed="Window_Closed"
-        AllowsTransparency="True">
+        Closed="Window_Closed" 
+        ResizeMode ="CanResizeWithGrip"
+        ShowInTaskbar ="True"
+        Background="White"
+        SizeChanged="Window_SizeChanged">
     <Grid Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="0.4926*"/>
+            <ColumnDefinition Width="24.63*"/>
+            <ColumnDefinition Width="0.4926*"/>
+            <ColumnDefinition Width="73.89*"/>
+            <ColumnDefinition Width="0.4926*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="11*"/>
-            <RowDefinition Height="3.2*"/>
+            <RowDefinition Height="6.55*"/>
+            <RowDefinition Height="72.05*"/>
+            <RowDefinition Height="0.85*"/>
+            <RowDefinition Height="19.65*"/>
+            <RowDefinition Height="0.85*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.ColumnSpan="2" 
+        <Border Grid.RowSpan="4"
+                Background="#FFE83434"/>
+        <Border Grid.Row="2"
+                Grid.ColumnSpan="5"
+                Background="#FFE83434"/>
+        <Border Grid.RowSpan="4"
+                Grid.Column="2"
+                Background="#FFE83434"/>
+        <Border Grid.Row="4"
+                Grid.ColumnSpan="4"
+                Background="#FFE83434"/>
+        <Border Grid.RowSpan="4"
+                Grid.Column="4"
+                Background="#FFE83434"/>
+        <StackPanel Grid.ColumnSpan="4" 
                     MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
             <materialDesign:ColorZone Background="#FFE83434" >
                 <StackPanel HorizontalAlignment="Right" >
@@ -41,32 +61,34 @@
             </materialDesign:ColorZone>
         </StackPanel>
         <StackPanel Grid.Row="1"
+                    Grid.Column="1"
                     x:Name="Users_StackPanel">
-            <TextBlock Text="Me"
+            <TextBlock Text="Me" 
                    HorizontalAlignment="Center"
                    FontSize="20"
-                   Margin="0,0,38,0"
+                   Margin="0,0,20,0"
                    Foreground="Red"/>
             <Button x:Name="MyUserName"
                     Content="MyUser"
-                    Background="#FFE83434"
+                    Background="#FFFB3434"
                     Foreground="Black"
                     BorderBrush="OrangeRed"
                     Grid.Row="1"
-                    Margin="0,0,38,0"/>
+                    Margin="0,0,20,0"/>
             <TextBlock Text="All Users"
                    HorizontalAlignment="Center"
                    FontSize="20"
-                   Margin="0,0,38,0"
+                   Margin="0,0,20,0"
                    Foreground="Red"/>
             <ScrollViewer x:Name="ScrollViewer_MyStack"
-                          Grid.Row="1"
-                          Style="{StaticResource MaterialDesignScrollViewer}"  VerticalAlignment="Bottom">
+                          Grid.Row="1"  
+                          VerticalScrollBarVisibility="Auto">
                 <StackPanel x:Name="MyStack" 
                     Grid.Row="1"/>
             </ScrollViewer>
         </StackPanel>
-        <Button Grid.Row="2" 
+        <Button Grid.Row="3" 
+                Grid.Column="1"
                 Background="Transparent"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left"
@@ -76,20 +98,19 @@
                 materialDesign:ShadowAssist.ShadowDepth="Depth0"
                 Click="BackToLogin">
             <materialDesign:PackIcon Kind="ExitToApp" 
-                                 Foreground="#FFF32C2C"
-                                 Height="40"
-                                 Width="40"/>
+                                     Foreground="#FFF32C2C"
+                                     Height="60"
+                                     Width="43"/>
         </Button>
         <TextBox x:Name="Text_Message"
-                 Grid.Row="2"
-                 Grid.Column="2"
+                 Grid.Row="3"
+                 Grid.Column="3"
                  VerticalAlignment="Bottom"
                  materialDesign:HintAssist.Hint="Your Message"
                  materialDesign:TextFieldAssist.TextBoxViewMargin="0,0,0,50"
                  materialDesign:TextFieldAssist.HasTextAreaBox="True"
                  Background="Transparent"
-                 Height="80"
-                 Margin="10"
+                 Margin="10,40,10,10"
                  FontSize="15"
                  materialDesign:HintAssist.FloatingScale="0.9"
                  Visibility="Hidden"
@@ -97,8 +118,8 @@
                  GotFocus="Text_Message_GotFocus"
                  LostFocus="Text_Message_LostFocus"/>
         <Button x:Name="SendMessage_Button"
-                Grid.Row="2"
-                Grid.Column="2"
+                Grid.Row="3"
+                Grid.Column="3"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Right"
                 Margin="0,0,0,20"
@@ -114,37 +135,18 @@
         </Button>
         <ScrollViewer x:Name="ScrollViewer_Messages"
                       Grid.Row="1"
-                      Grid.Column="2">
+                      Grid.Column="3"
+                      VerticalScrollBarVisibility="Auto"
+                      Margin="0,0,0,20">
             <StackPanel x:Name="StackPanel_Messages"
-                    Grid.Column="2"
-                    Grid.Row="1"
                     Orientation="Vertical"
                     VerticalAlignment="Bottom">
             </StackPanel>
         </ScrollViewer>
-        <StackPanel x:Name="StackPanel_Settings"
-                    Grid.Row="1"
-                    Visibility="Hidden">
-            <Button Margin="0,5,0,5"
-                    Content="Show All Users"
-                    Click="Admin_ShowAllUsers_Click"
-                    FontSize="13">
-            </Button>
-            <Button Margin="0,5,0,5"
-                    Content="History Messages"
-                    Click="Admin_ShowHistoryMessages_Click"
-                    FontSize="13">
-            </Button>
-            <Button Margin="0,5,0,5"
-                    Content="Connection History"
-                    Click="Admin_ShowConnectionHistory_Click"
-                    FontSize="13">
-            </Button>
-        </StackPanel>
         <DataGrid x:Name="DataGrid_Admin"
                   Grid.Row="1"
-                  Grid.Column="2"
-                  Grid.RowSpan="2"
+                  Grid.Column="3"
+                  Grid.RowSpan="3"
                   Visibility="Hidden"
                   GridLinesVisibility="All"
                   AutoGenerateColumns="False">

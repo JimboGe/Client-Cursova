@@ -20,11 +20,11 @@
   <wsdl:message name="IService1_GetAllMessages_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllMessagesResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetAllLogs_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllLogs" />
+  <wsdl:message name="IService1_GetUserLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserLog" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetAllLogs_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllLogsResponse" />
+  <wsdl:message name="IService1_GetUserLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserLogResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_CheckNickName_InputMessage">
     <wsdl:part name="parameters" element="tns:CheckNickName" />
@@ -43,12 +43,6 @@
   </wsdl:message>
   <wsdl:message name="IService1_CheckAccount_OutputMessage">
     <wsdl:part name="parameters" element="tns:CheckAccountResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_LogUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:LogUser" />
-  </wsdl:message>
-  <wsdl:message name="IService1_LogUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LogUserResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_ForgotPass_InputMessage">
     <wsdl:part name="parameters" element="tns:ForgotPass" />
@@ -122,11 +116,11 @@
   <wsdl:message name="IService1_GetTimeMessages_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTimeMessagesResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetTimeFromOfflineUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetTimeFromOfflineUser" />
+  <wsdl:message name="IService1_LogUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogUser" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetTimeFromOfflineUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetTimeFromOfflineUserResponse" />
+  <wsdl:message name="IService1_LogUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogUserResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetAllUsers">
@@ -137,9 +131,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllMessages" message="tns:IService1_GetAllMessages_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllMessagesResponse" message="tns:IService1_GetAllMessages_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllLogs">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllLogs" message="tns:IService1_GetAllLogs_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllLogsResponse" message="tns:IService1_GetAllLogs_OutputMessage" />
+    <wsdl:operation name="GetUserLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserLog" message="tns:IService1_GetUserLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserLogResponse" message="tns:IService1_GetUserLog_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CheckNickName">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CheckNickName" message="tns:IService1_CheckNickName_InputMessage" />
@@ -152,10 +146,6 @@
     <wsdl:operation name="CheckAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CheckAccount" message="tns:IService1_CheckAccount_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CheckAccountResponse" message="tns:IService1_CheckAccount_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="LogUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LogUser" message="tns:IService1_LogUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LogUserResponse" message="tns:IService1_LogUser_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ForgotPass">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ForgotPass" message="tns:IService1_ForgotPass_InputMessage" />
@@ -205,9 +195,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetTimeMessages" message="tns:IService1_GetTimeMessages_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetTimeMessagesResponse" message="tns:IService1_GetTimeMessages_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetTimeFromOfflineUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetTimeFromOfflineUser" message="tns:IService1_GetTimeFromOfflineUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetTimeFromOfflineUserResponse" message="tns:IService1_GetTimeFromOfflineUser_OutputMessage" />
+    <wsdl:operation name="LogUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LogUser" message="tns:IService1_LogUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LogUserResponse" message="tns:IService1_LogUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -230,8 +220,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllLogs">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetAllLogs" style="document" />
+    <wsdl:operation name="GetUserLog">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserLog" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -259,15 +249,6 @@
     </wsdl:operation>
     <wsdl:operation name="CheckAccount">
       <soap:operation soapAction="http://tempuri.org/IService1/CheckAccount" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LogUser">
-      <soap:operation soapAction="http://tempuri.org/IService1/LogUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -383,8 +364,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetTimeFromOfflineUser">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetTimeFromOfflineUser" style="document" />
+    <wsdl:operation name="LogUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/LogUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
